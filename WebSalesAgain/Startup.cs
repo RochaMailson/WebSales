@@ -37,7 +37,8 @@ namespace WebSalesAgain
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddDbContext<WebSalesAgainContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("WebSalesAgainContext")));
+                    options.UseMySql(Configuration.GetConnectionString("WebSalesAgainContext"), builder =>
+                        builder.MigrationsAssembly("WebSalesAgain"))); 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
