@@ -9,6 +9,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using WebSalesAgain.Data;
 
 namespace WebSalesAgain
 {
@@ -33,6 +35,9 @@ namespace WebSalesAgain
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddDbContext<WebSalesAgainContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("WebSalesAgainContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
